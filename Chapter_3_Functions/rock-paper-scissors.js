@@ -39,7 +39,8 @@ push() to stack happens immediately preceding descent into a new recursive call
 pop() from stack happens immediately following return from a completed recursive call
 
 It's interesting to note that the value of currentRound must be available in the
-enclosing outer function scope (not only within the enclosed recursive function's scope). In order for its value to persist & not be overwritten by an empty array.
+enclosing outer function scope (not only within the enclosed recursive function's scope).
+In order for its value to persist & not be overwritten by an empty array.
 
 Use of variables currentRound & recurCallDepth is an attempt to more easily visualize
 the tree of recursive calls
