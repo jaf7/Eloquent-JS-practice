@@ -2,6 +2,11 @@
 Practicing recursion:
 This is a recursive function to print the steps to solve an arbitrary Towers of Hanoi problem
 (With helper function logMove())
+
+This is a re-write and study of a function written during the MITx course
+6.00.1x Introduction to Computer Science and Programming Using Python
+https://courses.edx.org/courses/course-v1:MITx+6.00.1x_8+1T2016/info
+https://courses.edx.org/certificates/be5594d409634b2fb9bbf9b668939c47
 */
 
 function logMove( from, to ) {
