@@ -1,7 +1,7 @@
 /*
 Practicing recursion:
 This is a recursive function to print the steps to solve an arbitrary Towers of Hanoi problem
-(With helper function logMove)
+(With helper function logMove())
 */
 
 function logMove( from, to ) {
@@ -13,11 +13,14 @@ function towerSolve( stackSize, fromPosition, toPosition, sparePosition ) {
 
   else {
     // first recursive call inverts the target & auxillary stack positions
+    // (auxillary position becomes target)
     // and moves all but the last bottom disc (n-1 discs where stacksize=n)
     towerSolve( stackSize-1, fromPosition, sparePosition, toPosition );
+    // the actual move that gets printed by logMove():
     // move the last disc (nth disc, stacksize=n) from source to target
     towerSolve( 1, fromPosition, toPosition, sparePosition );
     // second recursive call inverts the source and auxillary stack positions
+    // (auxillary position becomes source)
     // and moves all but the last bottom disc (n-1 discs where stacksize=n)
     towerSolve( stackSize-1, sparePosition, toPosition, fromPosition );
   }
