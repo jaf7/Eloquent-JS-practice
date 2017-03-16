@@ -1,6 +1,7 @@
 /*
 Practicing recursion:
 This is a recursive function to print the steps to solve an arbitrary Towers of Hanoi problem
+(With helper function logMove)
 */
 
 function logMove( from, to ) {
