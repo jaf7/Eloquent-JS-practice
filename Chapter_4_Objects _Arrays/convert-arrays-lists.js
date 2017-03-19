@@ -1,3 +1,4 @@
+// example list object
 var listObj = {
 	value: 1,
 	reference: {
@@ -14,7 +15,7 @@ function prepend( element, list ) {
 	return { value: element, reference: list };
 }
 
-// Build a list data structure like above, given an array
+// Build a list data structure like example above, given an array
 function arrayToList( array ) {
 	var list = { value: array[array.length-1], reference: null }; // set 1st value in this new list == last value in array
 	for ( var i = array.length-2; i >= 0; i-- ) { // start iterating downwards starting at end of array remainder
@@ -45,6 +46,7 @@ function nth( list, index ) {
 	return arr[index];
 }
 
+// Recursive version of nth()
 function nthRecursive( list, n ) {
 	if ( !list ) { return undefined; }
 	if ( n === 0 ) { return list.value; }
