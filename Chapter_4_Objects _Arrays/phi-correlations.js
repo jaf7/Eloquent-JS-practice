@@ -113,38 +113,39 @@ function hasEvent(event, entry) {
 // Generate a correlation table for a given event in a given journal
 // (See Chapter 4 squirrel table, url above)
 function tableFor(event, journal) {
-  // set up table: index positions (in decimal notation)
-  // indicate correlation-type in binary notation
+  // set up table: index positions, if converted to binary notation,
+  // indicate correlation-type as represented in Chapter 4 and here:
+  // https://wikimedia.org/api/rest_v1/media/math/render/svg/215a1b9c47f5f7114ffb877b7f79f540a38044dc
   var table = [0, 0, 0, 0];
   for (var i = 0; i < journal.length; i++) { // iterate over journal
     var entry = journal[i],
-      index = 0; // index starts from 0 for each iteration
+        index = 0; // index starts from 0 for each iteration
     if (hasEvent(event, entry)) {
-      index += 1;
-    } // if true, can't be index 0 (neither variable true)
+        index += 1; // if true, can't be index 0 (binary 00, where neither variable is true)
+    }
     if (entry.squirrel) {
-      index += 2;
-    } // if true, increment to index 2 or 3 (true,false or true,true)
-    table[index] += 1; // increment value of this correlation-type
+      index += 2; // if true, increment to index 2 or 3 (table positions 01: true-false or 11: true-true)
+    }
+    table[index] += 1; // correlation-type is set, now increment its value
   }
-  return table;
+  return table; // return the array representation of a table
 }
 // tableFor('pizza', JOURNAL);
 
 // Compute correlations for a given event table
 // --------------------------------
-// "The phi coefficient provides a good measure of correlation"
+// "The phi coefficient provides a good measure of correlation ..."
 // for binary (Boolean) variables.
 // https://en.wikipedia.org/wiki/Phi_coefficient
-// phi coefficient: https://wikimedia.org/api/rest_v1/media/math/render/svg/215a1b9c47f5f7114ffb877b7f79f540a38044dc
+// phi coefficient looks like: https://wikimedia.org/api/rest_v1/media/math/render/svg/215a1b9c47f5f7114ffb877b7f79f540a38044dc
 // --------------------------------
-function phi(table) {
+function phi(table) { // this computes the phi coefficient: same form as shown in above wikimedia link
   return (table[3] * table[0] - table[2] * table[1]) /
     Math.sqrt((table[2] + table[3]) * // sum all measurements where 1st variable is true
       (table[0] + table[1]) * // sum all where 1st variable is false
       (table[1] + table[3]) * // sum all where 2nd variable is true
       (table[0] + table[2])); // sum all where 2nd variable is false
-}
+} // We're returning a Number here
 
 // Storing correlations simple example
 var map = {};
@@ -168,7 +169,7 @@ function gatherCorrelations(journal) {
       }
     }
   }
-  return phis;
+  return phis; // return this new correlations object
 }
 
 // store a correlations object
@@ -181,19 +182,17 @@ function listCorrelations(correlations) {
 }
 // listCorrelations( correlations1 );
 
-// filter correlations to > 0.1 & < -0.1 (to define hypothesis about data)
-function filterCorrelations(correlations, high, low) {
-  // 	console.log( "filtered:" );
-  var filtered = {};
-  var arr = [];
+// filter correlations to > 0.1 & < -0.1 (help form hypothesis about data)
+function filterCorrelations(correlations, high, low) { // pass in a correlations object, upper & lower limit values
+  var filtered = {},
+      arr = [];
   for (var event in correlations) {
-    var correlation = correlations[event];
+    var correlation = correlations[event]; // store each correlation value (a Number)
     if (correlation > high || correlation < low) {
-      filtered[event] = correlation; // populate new object literal
+      filtered[event] = correlation; // populate new object literal with filtered values
       console.log(event + ": ", correlation);
     }
   }
-  //return filtered.toString();
 }
 // filterCorrelations( correlations1, 0.2, -0.2 );
 
