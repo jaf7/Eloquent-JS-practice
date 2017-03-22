@@ -63,7 +63,7 @@ function computeAverageAge( centuryArray ) {
 	return Math.round( (centuryArray.reduce(add) / centuryArray.length) * 100 ) / 100 ;
 }
 
-// build object that maps centuries to their average ages (pass in a century object like centuryObj)
+// build object that maps centuries to their average ages (pass in a century object & compute function)
 function buildAvgAgeObj( obj, avg ) {
 	var averageAges = {};
 	for ( var century in obj ) {
