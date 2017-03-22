@@ -42,14 +42,16 @@ var ANCESTRY_FILE = "[\n  " + [
   '{"name": "Jacobus Bernardus van Brussel", "sex": "m", "born": 1736, "died": 1809, "father": "Jan van Brussel", "mother": "Elisabeth Haverbeke"}'
 ].join(",\n  ") + "\n]";
 
-// parse JSON
+// parse JSON, object returned is an array in this case
 var ancestry = JSON.parse(ANCESTRY_FILE);
-console.log(ancestry);
 
-// build a data object that maps names (properties) to people (objects)
+// build a data object from ancestry array that maps names (properties) to people (objects)
 var byName = {};
-ancestry.forEach( function( person ) {byName[person.name] = person;} );
-console.log( byName );
+ancestry.forEach( function( person ) {
+  // dot notation nested within bracket notation:
+  // the brackets set a new property using the name that person.name evaluates to.
+  byName[person.name] = person;
+});
 
 // helper: compute age difference value for a child and mother in an ancestry object
 function ageDiff( data, child, mother ) {
