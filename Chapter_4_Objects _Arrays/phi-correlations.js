@@ -210,7 +210,7 @@ function testAndNotCorrelation(journal, event1, event2) {
   }
   return "phi coefficient for stamped entries (has " + "\"" + event1 + "\"" + " & not " + "\"" + event2 + "\"" + ": " + phi(tableFor("stamp", journal));
 }
-testAndNotCorrelation(JOURNAL, "peanuts", "brushed teeth");
+    testAndNotCorrelation(JOURNAL, "peanuts", "brushed teeth");
 
 // refactor addEntry to use the arguments object
 function addEntry(squirrel) {

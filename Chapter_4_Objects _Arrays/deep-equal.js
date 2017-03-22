@@ -1,5 +1,5 @@
 // Given two values, return true only if values are the same. Or
-// if objects, they have the same properties whose values are also equal
+// if objects, they must have the same properties whose values are also equal
 // Compare objects using a recursive call
 
 function deepEqual( a, b ) {
