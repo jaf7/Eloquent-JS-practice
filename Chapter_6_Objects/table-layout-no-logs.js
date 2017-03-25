@@ -1,6 +1,6 @@
 /*
-A walk-through / think-through of building the table layout from Chapter 6
-Plus intermediate tests and the use of a novel data set CARS to help clarify
+A walk-through / think-through of building the table layout from Chapter 6.
+Also intermediate tests and the use of a novel data set CARS to help clarify
 my understanding of control flow, especially in the higher order functions.
 There is a version with verbose commenting and console.log() calls: table-layout.js
 */
