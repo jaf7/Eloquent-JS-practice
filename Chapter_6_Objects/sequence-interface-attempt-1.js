@@ -1,7 +1,7 @@
 /*
 First attempt
 "Design an interface that abstracts iteration over a collection of values"
-But with this solution builds an array to store the entirety of any range,
+But this solution builds an array to store the entirety of any range,
 which can presumably be inefficient as the size of the range grows.
 */
 
