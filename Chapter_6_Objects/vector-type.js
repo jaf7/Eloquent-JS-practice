@@ -1,10 +1,13 @@
-// Constructor
+// Constructor that represents a vector in 2d space
 function Vector( x, y ) {
 	this.x = x;
 	this.y = y;
 }
 
-// Add two methods on the prototype
+/*
+Add two methods on the prototype, plus & minus, 
+that take another vector as argument
+*/
 Vector.prototype.plus = function( otherVector ) {
 	return new Vector( this.x + otherVector.x, this.y + otherVector.y );
 };

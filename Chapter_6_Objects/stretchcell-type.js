@@ -36,9 +36,10 @@ function repeat( string, times ) {
 
 /*
 new type StretchCell
-TextCell objects are passed in as 'inner', so our methods on
-StretchCell facilitate calling through to the TextCell methods:
+TextCell objects are passed in (as 'inner'), so our methods on
+StretchCell can call through to the TextCell methods:
 this.inner.minWidth, this.inner.minHeight, this.inner.draw
+(Composition)
 */
 function StretchCell( inner, width, height ) {
 	this.inner = inner;
